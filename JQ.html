@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script> -->
+    <script src="./jQuery/jquery-3.6.4.js"></script>
+    <title>Intro to jquery</title>
+</head>
+
+<body>
+    <h1>simple calculator</h1>
+    <input type="text" id="num1" placeholder="First Number">
+    <br><br>
+    <select id="op">
+        <option value="+" id="add">+</option>
+        <option value="-" id="sub">-</option>
+        <option value="*" id="multi">*</option>
+        <option value="/" id="division">/</option>
+        <option value="pow" id="power">pow</option>
+    </select>
+    <br><br>
+    <input type="text" id="num2" placeholder="Second Number">
+    <br><br>
+    <button id="calculate">=</button>
+    <p id="res"></p>
+    <script>
+        $("#calculate").click(function () {
+            let a = $("#num1").val()
+            let b = $("#num2").val()
+            let op = $("#op").val()
+            let c = 0
+            if (a == "") {
+                alert("Enter the first number")
+                return
+            }
+            else if (isNaN(a)) {
+                alert("First operand must be a number")
+                return
+            }
+            if (b == "") {
+                alert("Enter the second number")
+                return
+            }
+            else if (isNaN(b)) {
+                alert("second operand must be a number")
+                return
+            }
+            a=parseFloat(a)
+            b=parseFloat(b)
+            switch (op) {
+                case '+':
+                    c = a + b;
+                    break;
+                case '-':
+                    c = a - b;
+                    break;
+                case '*':
+                    c = a * b;
+                    break;
+                case '/':
+                    c = a / b;
+                    break;
+                case 'pow':
+                    c = Math.pow(a, b);
+                    break;
+                default:
+                    break;
+            }
+            let res = "Result =" + c
+            $("#res").text(res);
+        })
+    </script>
+
+</body>
+
+</html>
